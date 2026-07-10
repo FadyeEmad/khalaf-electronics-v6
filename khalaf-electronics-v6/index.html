@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Khalaf Electronics — Premium Technology, Coming Soon</title>
+<meta name="description" content="Khalaf Electronics — a premium destination for smartphones, wearables, audio, tablets and gaming. Something exceptional is arriving."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#ffffff;--ice:#eef5ff;--ice2:#e3eefc;--sky:#bcdcff;
+  --royal:#1560d0;--electric:#2b8bef;--bright:#58a7ff;--deep:#0a2a66;--deep2:#071e4d;
+  --ink:#0a1b3a;--muted:#5d6b86;--line:rgba(10,42,102,.09);--line2:rgba(10,42,102,.14);
+  --grad:linear-gradient(120deg,#58a7ff,#2b8bef 55%,#1560d0);
+  --glass:rgba(255,255,255,.7);--glassbd:rgba(255,255,255,.9);
+  --r:18px;--rl:28px;--rxl:40px;
+  --disp:'Sora',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);color:var(--ink);background:var(--white);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-weight:450}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:rgba(43,139,239,.18)}
+h1,h2,h3,h4{font-family:var(--disp);letter-spacing:-.02em;line-height:1.05;color:var(--deep);font-weight:700}
+.shell{max-width:1340px;margin:0 auto;padding:0 clamp(20px,4vw,54px)}
+
+/* backdrop */
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+  radial-gradient(900px 620px at 88% -6%,#e6f1ff 0,rgba(230,241,255,0) 60%),
+  radial-gradient(820px 600px at -6% 12%,#eef5ff 0,rgba(238,245,255,0) 58%),
+  linear-gradient(180deg,#ffffff,#f6faff 60%,#ffffff)}
+.bg .dots{position:absolute;inset:0;opacity:.5;
+  background-image:radial-gradient(rgba(21,96,208,.10) 1px,transparent 1.4px);background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(circle at 50% 20%,#000,transparent 72%);mask-image:radial-gradient(circle at 50% 20%,#000,transparent 72%)}
+.blob{position:absolute;border-radius:50%;filter:blur(64px);opacity:.5;will-change:transform}
+.b1{width:44vw;height:44vw;background:radial-gradient(circle,#bcdcff,#bcdcff00 70%);top:-12%;right:-8%;animation:fl1 20s ease-in-out infinite}
+.b2{width:36vw;height:36vw;background:radial-gradient(circle,#cdd9ff,#cdd9ff00 70%);top:44%;left:-10%;animation:fl2 26s ease-in-out infinite}
+@keyframes fl1{50%{transform:translate(-40px,40px) scale(1.08)}}
+@keyframes fl2{50%{transform:translate(40px,-30px) scale(1.1)}}
+
+#prog{position:fixed;top:0;left:0;height:2.5px;width:0;z-index:120;background:var(--grad)}
+
+/* loader */
+#loader{position:fixed;inset:0;z-index:200;background:#fff;display:flex;align-items:center;justify-content:center;
+  transition:opacity .7s var(--ease),visibility .7s}
+#loader.done{opacity:0;visibility:hidden}
+#loader img{width:150px;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.5;transform:scale(.97)}}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s var(--ease)}
+.nav{display:flex;align-items:center;justify-content:space-between;max-width:1340px;margin:0 auto;padding:22px clamp(20px,4vw,54px);transition:.4s var(--ease)}
+header.scrolled{background:rgba(255,255,255,.72);backdrop-filter:blur(18px) saturate(160%);box-shadow:0 1px 0 var(--line)}
+header.scrolled .nav{padding-top:14px;padding-bottom:14px}
+.nav-logo img{height:34px}
+.links{display:flex;gap:2px;align-items:center}
+.links a{padding:9px 15px;font-size:14.5px;font-weight:550;color:var(--ink);border-radius:99px;transition:.25s;position:relative}
+.links a:hover{color:var(--royal);background:rgba(21,96,208,.07)}
+.links a.active{color:var(--royal)}
+.cta-btn{font-family:var(--font);font-weight:600;font-size:14.5px;color:#fff;background:var(--grad);border:none;
+  padding:12px 22px;border-radius:99px;cursor:pointer;position:relative;overflow:hidden;
+  box-shadow:0 8px 22px rgba(43,139,239,.32);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.cta-btn:hover{box-shadow:0 12px 30px rgba(43,139,239,.45)}
+.cta-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.5),transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.cta-btn:hover::after{transform:translateX(120%)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:24px;height:2px;background:var(--deep);border-radius:2px;transition:.3s}
+
+/* generic */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--font);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--royal);margin-bottom:20px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--grad);border-radius:2px}
+.sec{padding:clamp(80px,11vw,140px) 0}
+.sec-head{max-width:640px;margin:0 auto clamp(48px,6vw,72px);text-align:center}
+.sec-head.left{margin-left:0;text-align:left}
+.sec-head h2{font-size:clamp(32px,4.6vw,54px);font-weight:700}
+.sec-head p{color:var(--muted);font-size:17px;margin-top:16px}
+.btn{font-family:var(--font);font-weight:600;font-size:15px;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:9px;
+  border-radius:99px;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s;position:relative;overflow:hidden}
+.btn svg{transition:transform .3s var(--ease)}.btn:hover svg{transform:translateX(3px)}
+.btn.primary{padding:15px 28px;color:#fff;background:var(--grad);box-shadow:0 10px 26px rgba(43,139,239,.34)}
+.btn.primary:hover{box-shadow:0 16px 38px rgba(43,139,239,.46)}
+.btn.primary::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.5),transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.btn.primary:hover::after{transform:translateX(120%)}
+.btn.ghost{padding:15px 26px;color:var(--royal);background:#fff;border:1px solid var(--line2)}
+.btn.ghost:hover{border-color:var(--electric);background:var(--ice)}
+
+/* HERO */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:112px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center;width:100%}
+.h-title{font-size:clamp(34px,4vw,58px);font-weight:700;color:var(--deep);line-height:1.06}
+.h-title .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.h-lead{font-size:clamp(16px,1.4vw,18.5px);color:var(--muted);max-width:480px;margin:22px 0 0;font-weight:500}
+.h-lead b{color:var(--royal);font-weight:650}
+.h-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.count{display:flex;gap:clamp(10px,2vw,22px);margin-top:44px}
+.count .u{text-align:left}
+.count .n{font-family:var(--disp);font-size:clamp(30px,3.6vw,44px);font-weight:700;color:var(--deep);font-variant-numeric:tabular-nums;line-height:1}
+.count .l{font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.count .sep{width:1px;background:var(--line2);margin:2px 0 16px}
+
+/* hero visual (SVG, self-made) */
+.stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:560px;perspective:1200px}
+.stage .halo{position:absolute;width:118%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(88,167,255,.28),transparent 62%);filter:blur(6px)}
+.stage .ring{position:absolute;border:1.4px solid rgba(43,139,239,.18);border-radius:50%}
+.stage .ring.r1{width:92%;aspect-ratio:1;animation:spin 40s linear infinite}
+.stage .ring.r2{width:74%;aspect-ratio:1;border-style:dashed;border-color:rgba(43,139,239,.14);animation:spin 30s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.phone{position:relative;z-index:2;width:min(340px,82%);aspect-ratio:300/610;filter:drop-shadow(0 40px 60px rgba(10,42,102,.28));transform-style:preserve-3d;will-change:transform}
+@keyframes float{50%{transform:translateY(-16px)}}
+.chip{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;background:var(--glass);backdrop-filter:blur(14px);
+  border:1px solid var(--glassbd);border-radius:15px;padding:11px 14px;box-shadow:0 16px 36px rgba(10,42,102,.14);will-change:transform}
+.chip .ci{width:34px;height:34px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#fff;flex-shrink:0}
+.chip .t{font-family:var(--disp);font-size:13px;font-weight:700;color:var(--deep);line-height:1.1}
+.chip .s{font-size:11px;color:var(--muted);font-weight:500}
+.chip.c1{top:12%;right:-2%}
+.chip.c2{bottom:16%;left:-4%}
+.scrollcue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.scrollcue .m{width:22px;height:34px;border:2px solid var(--line2);border-radius:99px;position:relative}
+.scrollcue .m::before{content:"";position:absolute;top:6px;left:50%;width:3px;height:7px;background:var(--royal);border-radius:9px;transform:translateX(-50%);animation:wheel 1.6s var(--ease) infinite}
+@keyframes wheel{50%{transform:translate(-50%,9px);opacity:.3}}
+
+/* brands */
+.brands{padding:0 0 20px}
+.brands .cap{text-align:center;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:30px}
+.marq{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq .row{display:flex;gap:60px;width:max-content;align-items:center;animation:scr 34s linear infinite}
+.marq:hover .row{animation-play-state:paused}
+@keyframes scr{to{transform:translateX(-50%)}}
+.bname{font-family:var(--disp);font-size:clamp(22px,2.4vw,30px);font-weight:700;color:var(--deep);opacity:.34;transition:.3s;letter-spacing:-.5px}
+.bname:hover{opacity:1;color:var(--royal)}
+.bname span{font-weight:300}
+
+/* why */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.wc{background:#fff;border:1px solid var(--line);border-radius:var(--rl);padding:34px 30px;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s;position:relative;overflow:hidden}
+.wc:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(10,42,102,.12);border-color:transparent}
+.wc .ic{width:56px;height:56px;border-radius:16px;background:var(--ice);display:grid;place-items:center;color:var(--royal);margin-bottom:22px;transition:.4s var(--ease)}
+.wc:hover .ic{background:var(--grad);color:#fff;transform:rotate(-6deg)}
+.wc h3{font-size:19px;font-weight:700;margin-bottom:9px}
+.wc p{color:var(--muted);font-size:14.5px}
+
+/* categories */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cat{position:relative;border-radius:var(--rl);padding:30px;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;color:#fff;cursor:pointer;background:var(--grad);box-shadow:0 20px 46px rgba(10,42,102,.16);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.cat:hover{transform:translateY(-8px);box-shadow:0 34px 66px rgba(10,42,102,.24)}
+.cat.alt{background:linear-gradient(150deg,#0a2a66,#1560d0)}
+.cat.lite{background:#fff;color:var(--deep);border:1px solid var(--line)}
+.cat .grid-tex{position:absolute;inset:0;opacity:.16;background-image:radial-gradient(rgba(255,255,255,.8) 1px,transparent 1.5px);background-size:20px 20px}
+.cat.lite .grid-tex{opacity:.5;background-image:radial-gradient(rgba(21,96,208,.18) 1px,transparent 1.5px)}
+.cat .art{position:relative;align-self:flex-end;width:120px;height:120px;margin:-6px -6px 0 auto;transition:transform .5s var(--ease)}
+.cat:hover .art{transform:scale(1.08) rotate(-4deg)}
+.cat .meta{position:relative;z-index:2}
+.cat h3{color:inherit;font-size:23px;font-weight:700}
+.cat p{font-size:13.5px;opacity:.9;margin-top:3px;font-weight:500}
+.cat.lite p{color:var(--muted)}
+.cat .go{position:absolute;top:26px;right:26px;z-index:2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);transition:.35s var(--ease)}
+.cat.lite .go{background:var(--ice);border-color:var(--line);color:var(--royal)}
+.cat:hover .go{transform:rotate(-45deg)}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:center}
+.about-visual{position:relative;border-radius:var(--rxl);overflow:hidden;background:linear-gradient(150deg,#0a2a66,#1560d0);min-height:440px;
+  box-shadow:0 30px 70px rgba(10,42,102,.22);display:grid;place-items:center;padding:30px}
+.about-visual .gt{position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(circle at 50% 50%,#000,transparent 75%)}
+.about-visual .glow{position:absolute;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(88,167,255,.6),transparent 65%);filter:blur(20px)}
+.about-text h2{font-size:clamp(30px,4vw,48px)}
+.about-text p{color:var(--muted);font-size:16.5px;margin-top:18px;max-width:480px}
+.stats{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+.stat{flex:1;min-width:110px}
+.stat .n{font-family:var(--disp);font-size:clamp(34px,4.4vw,50px);font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums;line-height:1}
+.stat .l{font-size:12px;font-weight:600;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:.5px}
+
+/* launch band */
+.launch .inner{position:relative;border-radius:var(--rxl);overflow:hidden;padding:clamp(60px,8vw,100px) 28px;text-align:center;color:#fff;
+  background:linear-gradient(135deg,#071e4d,#1560d0 60%,#2b8bef);box-shadow:0 40px 80px rgba(7,30,77,.36)}
+.launch .inner .gt{position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 72%);animation:gp 30s linear infinite}
+@keyframes gp{to{background-position:46px 46px}}
+.launch .inner .lb{position:absolute;width:360px;height:360px;border-radius:50%;filter:blur(60px);opacity:.5}
+.launch .lb1{background:#58a7ff;top:-130px;left:-30px}.launch .lb2{background:#7ec8ff;bottom:-150px;right:-30px}
+.launch h2{position:relative;color:#fff;font-size:clamp(30px,4.4vw,52px)}
+.launch .sub{position:relative;opacity:.85;max-width:480px;margin:14px auto 46px;font-size:16px}
+.bigcount{position:relative;display:flex;gap:clamp(14px,4vw,46px);justify-content:center;flex-wrap:wrap}
+.bigcount .u{position:relative}
+.bigcount .n{font-family:var(--disp);font-size:clamp(48px,8vw,104px);font-weight:700;line-height:.9;font-variant-numeric:tabular-nums}
+.bigcount .l{font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.75;margin-top:12px;font-weight:600}
+.bigcount .u:not(:last-child)::after{content:":";position:absolute;right:clamp(-25px,-2vw,-15px);top:0;font-size:clamp(30px,5vw,56px);font-weight:300;opacity:.4}
+
+/* social */
+.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.soc{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--rl);padding:26px 20px;text-align:center;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s;overflow:hidden;cursor:pointer}
+.soc:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(10,42,102,.14);border-color:transparent}
+.soc .si{width:58px;height:58px;border-radius:17px;display:grid;place-items:center;color:#fff;margin:0 auto 16px;transition:.4s var(--ease)}
+.soc:hover .si{transform:scale(1.1) rotate(-6deg)}
+.soc h4{font-size:16px;font-weight:700}
+.soc span{font-size:12.5px;color:var(--muted);font-weight:500;display:block;margin-top:2px}
+.wa{background:linear-gradient(140deg,#25d366,#128c4b)}.fb{background:linear-gradient(140deg,#4293ff,#1877f2)}
+.ig{background:linear-gradient(140deg,#feda75,#d62976 45%,#962fbf)}.tk{background:linear-gradient(140deg,#00f2ea,#111 55%,#ff0050)}.ph{background:var(--grad)}.sn{background:linear-gradient(140deg,#fffc00,#ffe95c)}.soc .si.sn{color:#12120a}
+
+/* cta */
+.cta-wrap{text-align:center;position:relative}
+.cta-wrap .eyebrow{justify-content:center}
+.cta-wrap h2{font-size:clamp(36px,5.5vw,72px);font-weight:700}
+.cta-wrap h2 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta-wrap p{color:var(--muted);font-size:17px;margin:16px auto 32px;max-width:440px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot img{height:36px}
+.foot .cc{font-size:13.5px;color:var(--muted);font-weight:500}
+.fsoc{display:flex;gap:9px}
+.fsoc a{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--ice);color:var(--royal);transition:.3s var(--ease)}
+.fsoc a:hover{background:var(--grad);color:#fff;transform:translateY(-3px)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}.d5{transition-delay:.35s}
+
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:10px}
+  .stage{min-height:440px;order:-1}
+  .chip.c1{right:4%}.chip.c2{left:2%}
+  .why-grid,.cat-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .soc-grid{grid-template-columns:repeat(2,1fr)}
+  .links{display:none}.links.open{display:flex;position:absolute;top:70px;left:16px;right:16px;flex-direction:column;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);padding:12px;border-radius:22px;box-shadow:0 20px 46px rgba(10,42,102,.16)}
+  .links.open a{width:100%}
+  .burger{display:flex}
+  header .cta-btn{display:none}
+}
+@media(max-width:560px){
+  .why-grid,.cat-grid,.soc-grid{grid-template-columns:1fr}
+  .count{gap:10px}.h-cta{width:100%}.h-cta .btn{flex:1;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.001ms!important}.rv{opacity:1;transform:none}}
+/* ===== dynamic motion layer ===== */
+#cursor{position:fixed;top:0;left:0;width:24px;height:24px;border-radius:50%;pointer-events:none;z-index:150;background:radial-gradient(circle,rgba(43,139,239,.55),rgba(43,139,239,0) 70%);mix-blend-mode:multiply;transform:translate(-50%,-50%);opacity:0;transition:width .25s var(--ease),height .25s var(--ease),opacity .3s;will-change:transform}
+#cursor.on{opacity:1}
+#cursor.grow{width:66px;height:66px;background:radial-gradient(circle,rgba(43,139,239,.26),rgba(43,139,239,0) 70%)}
+.h-title .g{background-size:220% 100%;animation:shim 6.5s ease-in-out infinite}
+@keyframes shim{50%{background-position:100% 0}}
+.shine{animation:shine 6s var(--ease) infinite}
+@keyframes shine{0%,12%{transform:translateX(-70px)}55%,100%{transform:translateX(300px)}}
+.wc,.soc,.cat{will-change:transform}
+.rippled{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:translate(-50%,-50%) scale(0);pointer-events:none;animation:rip .62s var(--ease) forwards;z-index:0}
+@keyframes rip{to{transform:translate(-50%,-50%) scale(1);opacity:0}}
+.n.flip{animation:flip .5s var(--ease)}
+@keyframes flip{0%{transform:translateY(-45%);opacity:0;filter:blur(3px)}100%{transform:none;opacity:1;filter:none}}
+@media(hover:none){#cursor{display:none}}
+@media(prefers-reduced-motion:reduce){#cursor{display:none}.h-title .g,.shine{animation:none}}
+.soc span a{color:inherit;transition:.25s}.soc span a:hover{color:var(--royal)}</style>
+</head>
+<body>
+<div class="bg"><div class="dots"></div><div class="blob b1" data-par="0.05"></div><div class="blob b2" data-par="0.08"></div></div>
+<div id="prog"></div>
+<div id="cursor"></div>
+<div id="loader"><img src="assets/logo.png" alt="Khalaf Electronics"/></div>
+
+<!-- SVG symbol library (self-made artwork) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7ec0ff"/><stop offset=".55" stop-color="#2b8bef"/><stop offset="1" stop-color="#1560d0"/></linearGradient>
+<linearGradient id="gw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#dbeaff" stop-opacity=".7"/></linearGradient>
+</defs>
+<symbol id="i-phone" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"><rect x="38" y="14" width="44" height="92" rx="12"/><path d="M52 22h16" stroke-linecap="round"/><path d="M56 98h8" stroke-linecap="round"/></g></symbol>
+<symbol id="i-watch" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"><rect x="40" y="36" width="40" height="48" rx="13"/><path d="M48 36l4-16h16l4 16M48 84l4 16h16l4-16" stroke-linecap="round"/><path d="M60 52v10l7 4" stroke-linecap="round"/></g></symbol>
+<symbol id="i-audio" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M30 66v-6a30 30 0 0160 0v6"/><rect x="22" y="64" width="16" height="26" rx="7"/><rect x="82" y="64" width="16" height="26" rx="7"/></g></symbol>
+<symbol id="i-tablet" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"><rect x="28" y="18" width="64" height="84" rx="10"/><path d="M54 90h12" stroke-linecap="round"/></g></symbol>
+<symbol id="i-game" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M40 44h40a20 20 0 0119 26l-3 10a11 11 0 01-20 3l-4-7H48l-4 7a11 11 0 01-20-3l-3-10a20 20 0 0119-26z"/><path d="M38 58v10M33 63h10M75 60h.01M85 68h.01"/></g></symbol>
+<symbol id="i-acc" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M46 30v18M74 30v18"/><rect x="38" y="48" width="44" height="20" rx="6"/><path d="M60 68v10a14 14 0 01-14 14"/></g></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M1 5h13v10H1zM14 8h4l3 3v4h-7"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></g></symbol>
+<symbol id="i-badge" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></g></symbol>
+<symbol id="i-price" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></symbol>
+<symbol id="i-support" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0116 0v6"/><path d="M20 19a2 2 0 01-2 2h-1v-6h3zM4 15h3v6H6a2 2 0 01-2-2z"/></g></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<!-- NAV -->
+<header id="hd"><nav class="nav">
+  <a class="nav-logo" href="#home"><img src="assets/logo.png" alt="Khalaf Electronics"/></a>
+  <div class="links" id="links">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#brands">Brands</a><a href="#why">Why Us</a><a href="#contact">Contact</a>
+  </div>
+  <button class="cta-btn magnetic" onclick="go('#contact')">Contact Us</button>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav></header>
+
+<!-- HERO -->
+<section class="hero" id="home"><div class="shell hero-grid">
+  <div class="hero-copy">
+    <span class="eyebrow rv">Coming Soon</span>
+    <h1 class="h-title rv d1">The future of <span class="g">technology</span><br>is almost here.</h1>
+    <p class="h-lead rv d2">Khalaf Electronics is preparing a premium destination for <b>smartphones</b>, <b>audio</b>, <b>wearables</b> and more — authentic, curated, delivered across Egypt.</p>
+    <div class="count rv d3" id="heroCount">
+      <div class="u"><div class="n" data-u="d">00</div><div class="l">Days</div></div><div class="sep"></div>
+      <div class="u"><div class="n" data-u="h">00</div><div class="l">Hours</div></div><div class="sep"></div>
+      <div class="u"><div class="n" data-u="m">00</div><div class="l">Mins</div></div><div class="sep"></div>
+      <div class="u"><div class="n" data-u="s">00</div><div class="l">Secs</div></div>
+    </div>
+    <div class="h-cta rv d4">
+      <button class="btn primary magnetic" onclick="go('#contact')">Get Notified <svg width="17" height="17"><use href="#i-arrow"/></svg></button>
+      <button class="btn ghost magnetic" onclick="go('#categories')">Explore Range</button>
+    </div>
+  </div>
+  <div class="stage rv d2">
+    <div class="halo" data-par="0.04"></div>
+    <div class="ring r1"></div><div class="ring r2"></div>
+    <div class="chip c1 magnetic" data-par="0.12"><div class="ci"><svg width="18" height="18"><use href="#i-shield"/></svg></div><div><div class="t">100% Original</div><div class="s">Sealed & verified</div></div></div>
+    <div class="chip c2 magnetic" data-par="0.16"><div class="ci"><svg width="18" height="18"><use href="#i-truck"/></svg></div><div><div class="t">Fast Delivery</div><div class="s">Across Egypt</div></div></div>
+    <svg class="phone" viewBox="0 0 300 610">
+      <defs><clipPath id="scr"><rect x="18" y="18" width="264" height="574" rx="38"/></clipPath>
+      <linearGradient id="scrg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a2a66"/><stop offset=".55" stop-color="#1560d0"/><stop offset="1" stop-color="#2b8bef"/></linearGradient><linearGradient id="shineg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+      <rect x="4" y="4" width="292" height="602" rx="52" fill="#fff" stroke="#dbe6f5" stroke-width="2"/>
+      <rect x="10" y="10" width="280" height="590" rx="46" fill="#eef4fb"/>
+      <g clip-path="url(#scr)">
+        <rect x="18" y="18" width="264" height="574" fill="url(#scrg)"/>
+        <g fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="10"><path d="M-20 360 C80 300 200 440 320 360"/><path d="M-20 400 C80 340 200 480 320 400"/><path d="M-20 440 C80 380 200 520 320 440"/></g>
+        <circle cx="150" cy="250" r="120" fill="#58a7ff" fill-opacity=".28"/>
+      </g>
+      <rect x="120" y="30" width="60" height="18" rx="9" fill="#0a2a66"/>
+      <text x="150" y="250" text-anchor="middle" fill="#fff" font-family="Sora,sans-serif" font-size="20" font-weight="600" letter-spacing="3">COMING</text>
+      <text x="150" y="286" text-anchor="middle" fill="#fff" font-family="Sora,sans-serif" font-size="34" font-weight="800" letter-spacing="2">SOON</text>
+      <rect x="95" y="330" width="110" height="34" rx="17" fill="#fff"/><text x="150" y="353" text-anchor="middle" fill="#1560d0" font-family="Sora,sans-serif" font-size="14" font-weight="700">KHALAF</text>
+      <rect x="18" y="18" width="86" height="574" fill="url(#shineg)" clip-path="url(#scr)" class="shine"/>
+    </svg>
+  </div>
+</div>
+<div class="scrollcue"><div class="m"></div>Scroll</div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands sec" id="brands" style="padding-top:0">
+  <div class="shell"><div class="cap rv">Trusted by the world's leading technology brands</div></div>
+  <div class="marq"><div class="row">
+    <span class="bname">Apple</span><span class="bname">SAMSUNG</span><span class="bname">Xiaomi</span><span class="bname">HONOR</span><span class="bname">HUAWEI</span><span class="bname">realme</span><span class="bname">OPPO</span>
+    <span class="bname">Apple</span><span class="bname">SAMSUNG</span><span class="bname">Xiaomi</span><span class="bname">HONOR</span><span class="bname">HUAWEI</span><span class="bname">realme</span><span class="bname">OPPO</span>
+  </div></div>
+</section>
+
+<!-- WHY -->
+<section class="sec" id="why"><div class="shell">
+  <div class="sec-head rv"><span class="eyebrow" style="justify-content:center">Why Khalaf</span><h2>Premium, without compromise.</h2><p>Every detail is engineered around trust, quality and a shopping experience as refined as the technology itself.</p></div>
+  <div class="why-grid">
+    <div class="wc rv"><div class="ic"><svg width="26" height="26"><use href="#i-badge"/></svg></div><h3>100% Original</h3><p>Authentic devices through official channels — sealed, verified, guaranteed.</p></div>
+    <div class="wc rv d1"><div class="ic"><svg width="26" height="26"><use href="#i-shield"/></svg></div><h3>Official Warranty</h3><p>Full manufacturer coverage and attentive after-sales care on everything.</p></div>
+    <div class="wc rv d2"><div class="ic"><svg width="26" height="26"><use href="#i-truck"/></svg></div><h3>Fast Delivery</h3><p>Tracked, careful shipping to your door anywhere across Egypt.</p></div>
+    <div class="wc rv"><div class="ic"><svg width="26" height="26"><use href="#i-price"/></svg></div><h3>Honest Prices</h3><p>Flagship technology at fair, transparent pricing — always.</p></div>
+    <div class="wc rv d1"><div class="ic"><svg width="26" height="26"><use href="#i-support"/></svg></div><h3>Real Support</h3><p>A knowledgeable team to help you choose, set up and get the most.</p></div>
+    <div class="wc rv d2"><div class="ic"><svg width="26" height="26"><use href="#i-bolt"/></svg></div><h3>Newest First</h3><p>The latest launches and flagship releases — arriving here first.</p></div>
+  </div>
+</div></section>
+
+<!-- CATEGORIES -->
+<section class="sec" id="categories"><div class="shell">
+  <div class="sec-head rv"><span class="eyebrow" style="justify-content:center">Explore</span><h2>A full world of tech.</h2><p>From pocket to desk to wrist — everything you love, curated in one place.</p></div>
+  <div class="cat-grid">
+    <div class="cat rv magnetic"><div class="grid-tex"></div><div class="go"><svg width="18" height="18"><use href="#i-arrow"/></svg></div><svg class="art" style="color:rgba(255,255,255,.92)"><use href="#i-phone"/></svg><div class="meta"><h3>Smartphones</h3><p>Flagships & everyday icons</p></div></div>
+    <div class="cat lite rv d1 magnetic"><div class="grid-tex"></div><div class="go"><svg width="18" height="18"><use href="#i-arrow"/></svg></div><svg class="art" style="color:var(--electric)"><use href="#i-audio"/></svg><div class="meta"><h3>Audio</h3><p>Earbuds & headphones</p></div></div>
+    
+    <div class="cat alt rv magnetic"><div class="grid-tex"></div><div class="go"><svg width="18" height="18"><use href="#i-arrow"/></svg></div><svg class="art" style="color:rgba(255,255,255,.92)"><use href="#i-game"/></svg><div class="meta"><h3>Gaming</h3><p>Gear built to win</p></div></div>
+    <div class="cat rv d1 magnetic"><div class="grid-tex"></div><div class="go"><svg width="18" height="18"><use href="#i-arrow"/></svg></div><svg class="art" style="color:rgba(255,255,255,.92)"><use href="#i-tablet"/></svg><div class="meta"><h3>Tablets</h3><p>Power for work & play</p></div></div>
+    <div class="cat lite rv d2 magnetic"><div class="grid-tex"></div><div class="go"><svg width="18" height="18"><use href="#i-arrow"/></svg></div><svg class="art" style="color:var(--electric)"><use href="#i-acc"/></svg><div class="meta"><h3>Accessories</h3><p>The essentials, elevated</p></div></div>
+  </div>
+</div></section>
+
+<!-- ABOUT -->
+<section class="sec" id="about"><div class="shell about-grid">
+  <div class="about-visual rv">
+    <div class="gt"></div><div class="glow"></div>
+    <svg viewBox="0 0 300 610" style="width:min(230px,60%);position:relative;filter:drop-shadow(0 30px 50px rgba(0,0,0,.3))" class="floaty">
+      <rect x="4" y="4" width="292" height="602" rx="52" fill="#0a1f45" stroke="#2b8bef" stroke-opacity=".4" stroke-width="2"/>
+      <rect x="14" y="14" width="272" height="582" rx="44" fill="#0a2a66"/>
+      <g fill="none" stroke="#58a7ff" stroke-opacity=".5" stroke-width="9"><path d="M20 340 C110 280 200 420 296 340"/><path d="M20 384 C110 324 200 464 296 384"/></g>
+      <rect x="120" y="28" width="60" height="16" rx="8" fill="#0a1f45"/>
+      <circle cx="150" cy="210" r="46" fill="none" stroke="#7ec8ff" stroke-width="4" stroke-opacity=".8"/>
+      <path d="M132 210l12 12 24-24" fill="none" stroke="#7ec8ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="150" y="300" text-anchor="middle" fill="#eaf3ff" font-family="Sora,sans-serif" font-size="17" font-weight="600" letter-spacing="3">KHALAF</text>
+    </svg>
+  </div>
+  <div class="about-text">
+    <span class="eyebrow rv">Our story</span>
+    <h2 class="rv d1">Technology, beautifully curated.</h2>
+    <p class="rv d2">Khalaf Electronics is a modern destination for the devices that move your world — bringing the finest brands together under one trusted roof.</p>
+    <p class="rv d3">Our promise is simple: authentic products, honest prices, and an experience as refined as the technology itself. We're preparing to open the doors on something you'll love.</p>
+    <div class="stats rv d4">
+      <div class="stat"><div class="n" data-count="14" data-suffix="+">0</div><div class="l">Top Brands</div></div>
+      <div class="stat"><div class="n" data-count="500" data-suffix="+">0</div><div class="l">Products</div></div>
+      <div class="stat"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">Original</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- LAUNCH -->
+<section class="sec launch"><div class="shell"><div class="inner rv">
+  <div class="gt"></div><div class="lb lb1"></div><div class="lb lb2"></div>
+  <h2>The countdown has begun.</h2>
+  <p class="sub">Be among the first to step inside. The experience begins in:</p>
+  <div class="bigcount" id="bigCount">
+    <div class="u"><div class="n" data-u="d">00</div><div class="l">Days</div></div>
+    <div class="u"><div class="n" data-u="h">00</div><div class="l">Hours</div></div>
+    <div class="u"><div class="n" data-u="m">00</div><div class="l">Minutes</div></div>
+    <div class="u"><div class="n" data-u="s">00</div><div class="l">Seconds</div></div>
+  </div>
+</div></div></section>
+
+<!-- SOCIAL -->
+<section class="sec" id="contact"><div class="shell">
+  <div class="sec-head rv"><span class="eyebrow" style="justify-content:center">Stay connected</span><h2>Follow the journey.</h2><p>Be the first to know the moment we launch — join the community today.</p></div>
+  <div class="soc-grid">
+    <a class="soc rv magnetic" href="https://wa.me/966544960914" target="_blank" rel="noopener"><div class="si wa"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 2a8 8 0 11-4.1 14.9l-.3-.2-2.8.8.8-2.7-.2-.3A8 8 0 0112 4zm-2.7 4c-.2 0-.5 0-.7.4-.2.4-.9 1-.9 2.3s1 2.6 1.1 2.8c.1.2 1.9 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-.7-.3-1.5-.6-2.3-1.5-.6-.6-1-1.3-1.1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3.2-.5v-.4c0-.1-.6-1.5-.8-2-.2-.4-.4-.4-.6-.4z"/></svg></div><h4>WhatsApp</h4><span>054 496 0914</span></a>
+    <a class="soc rv d1 magnetic" href="https://www.facebook.com/share/19CekwU36C/?mibextid=wwXIfr" target="_blank" rel="noopener"><div class="si fb"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.2c0-.9.2-1.4 1.5-1.4H18V.1C17.6 0 16.4 0 15.1 0 12.3 0 10.5 1.7 10.5 4.7V6H8v3h2.5v11h3.5z"/></svg></div><h4>Facebook</h4><span>Khalaf Electronics</span></a>
+    <a class="soc rv d2 magnetic" href="https://www.instagram.com/khalf_elec" target="_blank" rel="noopener"><div class="si ig"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></div><h4>Instagram</h4><span>@khalf_elec</span></a>
+    <a class="soc rv d3 magnetic" href="https://www.tiktok.com/@khalf.elec" target="_blank" rel="noopener"><div class="si tk"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.3 1.7 4 4 4.3V10c-1.5 0-2.9-.4-4-1.1v6.4a5.8 5.8 0 11-5.8-5.8c.3 0 .6 0 .9.1v3a2.9 2.9 0 102 2.7V3z"/></svg></div><h4>TikTok</h4><span>@khalf.elec</span></a>
+    <div class="soc rv d4 magnetic"><div class="si ph"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></div><h4>Call Us</h4><span><a href="tel:+966544960914">054 496 0914</a></span><span><a href="tel:+966569389691">056 938 9691</a></span></div>
+    <a class="soc rv d5 magnetic" href="https://snapchat.com/t/7zHSNyna" target="_blank" rel="noopener"><div class="si sn"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2c-2.7 0-4.6 2-4.7 4.7 0 .6 0 1.2.1 1.8 0 .3-.2.5-.5.5-.4 0-.9-.3-1.2-.3-.4 0-.7.2-.7.6 0 .5.6.8 1.2 1 .5.2 1 .4 1 .9 0 .2-.1.4-.2.6-.6 1-1.7 1.7-2.8 2-.4.1-.6.3-.6.6 0 .4.4.6.8.7.3.1.7.1.9.4.1.2.1.5.3.7.2.2.5.2.8.2.4 0 .9-.1 1.4 0 .5.1.9.5 1.5.7.4.1.8.2 1.2.2s.8-.1 1.2-.2c.6-.2 1-.6 1.5-.7.5-.1 1 0 1.4 0 .3 0 .6 0 .8-.2.2-.2.2-.5.3-.7.2-.3.6-.3.9-.4.4-.1.8-.3.8-.7 0-.3-.2-.5-.6-.6-1.1-.3-2.2-1-2.8-2-.1-.2-.2-.4-.2-.6 0-.5.5-.7 1-.9.6-.2 1.2-.5 1.2-1 0-.4-.3-.6-.7-.6-.3 0-.8.3-1.2.3-.3 0-.5-.2-.5-.5.1-.6.1-1.2.1-1.8-.1-2.8-2.1-4.7-4.8-4.7z"/></svg></div><h4>Snapchat</h4><span>Add on Snapchat</span></a>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="sec" style="padding-top:0"><div class="shell cta-wrap rv">
+  <span class="eyebrow">Ready for launch?</span>
+  <h2>Stay connected.<br><span class="g">Follow us.</span></h2>
+  <p>Don't miss the reveal — join the Khalaf Electronics community and be first in line.</p>
+  <button class="btn primary magnetic" onclick="go('#contact')">Follow Us <svg width="18" height="18"><use href="#i-arrow"/></svg></button>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="shell foot">
+  <img src="assets/logo.png" alt="Khalaf Electronics"/>
+  <div class="cc">© 2026 Khalaf Electronics. All rights reserved.</div>
+  <div class="fsoc">
+    
+    <a href="https://wa.me/966544960914" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 2a8 8 0 11-4.1 14.9l-.3-.2-2.8.8.8-2.7-.2-.3A8 8 0 0112 4z"/></svg></a><a href="https://www.facebook.com/share/19CekwU36C/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.2c0-.9.2-1.4 1.5-1.4H18V.1C17.6 0 16.4 0 15.1 0 12.3 0 10.5 1.7 10.5 4.7V6H8v3h2.5v11h3.5z"/></svg></a>
+    <a href="https://www.instagram.com/khalf_elec" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+    <a href="https://www.tiktok.com/@khalf.elec" target="_blank" rel="noopener" aria-label="TikTok"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.3 1.7 4 4 4.3V10c-1.5 0-2.9-.4-4-1.1v6.4a5.8 5.8 0 11-5.8-5.8c.3 0 .6 0 .9.1v3a2.9 2.9 0 102 2.7V3z"/></svg></a><a href="https://snapchat.com/t/7zHSNyna" target="_blank" rel="noopener" aria-label="Snapchat"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2c-2.7 0-4.6 2-4.7 4.7 0 .6 0 1.2.1 1.8 0 .3-.2.5-.5.5-.4 0-.9-.3-1.2-.3-.4 0-.7.2-.7.6 0 .5.6.8 1.2 1 .5.2 1 .4 1 .9 0 .2-.1.4-.2.6-.6 1-1.7 1.7-2.8 2-.4.1-.6.3-.6.6 0 .4.4.6.8.7.3.1.7.1.9.4.1.2.1.5.3.7.2.2.5.2.8.2.4 0 .9-.1 1.4 0 .5.1.9.5 1.5.7.4.1.8.2 1.2.2s.8-.1 1.2-.2c.6-.2 1-.6 1.5-.7.5-.1 1 0 1.4 0 .3 0 .6 0 .8-.2.2-.2.2-.5.3-.7.2-.3.6-.3.9-.4.4-.1.8-.3.8-.7 0-.3-.2-.5-.6-.6-1.1-.3-2.2-1-2.8-2-.1-.2-.2-.4-.2-.6 0-.5.5-.7 1-.9.6-.2 1.2-.5 1.2-1 0-.4-.3-.6-.7-.6-.3 0-.8.3-1.2.3-.3 0-.5-.2-.5-.5.1-.6.1-1.2.1-1.8-.1-2.8-2.1-4.7-4.8-4.7z"/></svg></a>
+  </div>
+</div></footer>
+
+<script>
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches, fine=matchMedia('(pointer:fine)').matches;
+function go(id){const e=document.querySelector(id);if(e)e.scrollIntoView({behavior:'smooth'});}
+addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('done'),500));
+// nav + progress
+const hd=document.getElementById('hd'),prog=document.getElementById('prog'),secs=[...document.querySelectorAll('section[id]')],navA=[...document.querySelectorAll('.links a')];
+function sc(){const y=scrollY;hd.classList.toggle('scrolled',y>20);const h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(h>0?y/h*100:0)+'%';let c=secs[0]?.id;for(const s of secs)if(s.getBoundingClientRect().top<=130)c=s.id;navA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c));}
+addEventListener('scroll',sc,{passive:true});sc();
+// menu
+const burger=document.getElementById('burger'),links=document.getElementById('links');
+burger.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+// reveal
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.14});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// counters
+const cio=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){const el=x.target,to=+el.dataset.count,sf=el.dataset.suffix||'';let c=0;const st=Math.max(1,Math.ceil(to/50));const iv=setInterval(()=>{c+=st;if(c>=to){c=to;clearInterval(iv);}el.textContent=c+sf;},22);cio.unobserve(el);}}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+// countdown
+const target=new Date('2026-08-02T12:00:00+03:00').getTime(),pad=n=>String(n).padStart(2,'0');
+function setU(u,v){const t=pad(v);document.querySelectorAll('[data-u="'+u+'"]').forEach(e=>{if(e.textContent!==t){e.textContent=t;if(!rm){e.classList.remove('flip');void e.offsetWidth;e.classList.add('flip');}}});}
+function tick(){let d=Math.max(0,target-Date.now());const D=Math.floor(d/864e5);d-=D*864e5;const H=Math.floor(d/36e5);d-=H*36e5;const M=Math.floor(d/6e4);d-=M*6e4;const S=Math.floor(d/1e3);setU('d',D);setU('h',H);setU('m',M);setU('s',S);}
+tick();setInterval(tick,1000);
+// custom cursor
+if(fine&&!rm){const cur=document.getElementById('cursor');let cxp=innerWidth/2,cyp=innerHeight/2,tx=cxp,ty=cyp;
+addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;cur.classList.add('on');});
+addEventListener('mouseout',e=>{if(!e.relatedTarget)cur.classList.remove('on');});
+document.querySelectorAll('a,button,.magnetic,.soc,.cat,.wc').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('grow'));el.addEventListener('mouseleave',()=>cur.classList.remove('grow'));});
+(function cc(){cxp+=(tx-cxp)*.2;cyp+=(ty-cyp)*.2;cur.style.transform='translate('+cxp+'px,'+cyp+'px) translate(-50%,-50%)';requestAnimationFrame(cc);})();}
+// pointer + scroll motion engine
+let mx=innerWidth/2,my=innerHeight/2,tmx=mx,tmy=my,vel=0,lastY=scrollY;
+const pars=[...document.querySelectorAll('[data-par]')],phone=document.querySelector('.phone'),heroCopy=document.querySelector('.hero-copy'),row=document.querySelector('.marq .row'),bnames=[...document.querySelectorAll('.bname')];
+if(fine)addEventListener('mousemove',e=>{tmx=e.clientX;tmy=e.clientY;});
+function engine(t){mx+=(tmx-mx)*.08;my+=(tmy-my)*.08;const cx=mx/innerWidth-.5,cy=my/innerHeight-.5,y=scrollY;
+pars.forEach(el=>{const s=+el.dataset.par;el.style.transform='translate3d('+(-cx*s*60)+'px,'+((-cy*s*60)+(y*s*-0.12))+'px,0)';});
+if(phone)phone.style.transform='perspective(1100px) translateY('+(Math.sin(t/900)*10)+'px) rotateX('+(-cy*10)+'deg) rotateY('+(cx*13)+'deg)';
+if(heroCopy&&y<innerHeight){heroCopy.style.transform='translateY('+(y*0.12)+'px)';heroCopy.style.opacity=Math.max(0,1-y/720);}
+requestAnimationFrame(engine);}
+if(!rm)requestAnimationFrame(engine);else if(phone)phone.style.transform='none';
+// magnetic
+if(fine&&!rm)document.querySelectorAll('.magnetic').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.transform='translate('+((e.clientX-r.left-r.width/2)*.25)+'px,'+((e.clientY-r.top-r.height/2)*.35)+'px)';});el.addEventListener('mouseleave',()=>el.style.transform='');});
+// 3D tilt on feature cards
+if(fine&&!rm)document.querySelectorAll('.wc').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;el.style.transform='perspective(700px) translateY(-6px) rotateX('+(-py*8)+'deg) rotateY('+(px*10)+'deg)';});el.addEventListener('mouseleave',()=>el.style.transform='');});
+// ripple
+document.querySelectorAll('.btn,.cta-btn').forEach(b=>b.addEventListener('click',e=>{const r=b.getBoundingClientRect(),s=document.createElement('span'),d=Math.max(r.width,r.height);s.className='rippled';s.style.width=s.style.height=d+'px';s.style.left=(e.clientX-r.left)+'px';s.style.top=(e.clientY-r.top)+'px';b.appendChild(s);setTimeout(()=>s.remove(),650);}));
+</script>
+</body>
+</html>
