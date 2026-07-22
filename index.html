@@ -224,6 +224,32 @@ footer{border-top:1px solid var(--line);padding:40px 0}
 .fsoc a{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--ice);color:var(--royal);transition:.3s var(--ease)}
 .fsoc a:hover{background:var(--grad);color:#fff;transform:translateY(-3px)}
 
+/* locations */
+.loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.loc{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--rl);overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .4s}
+.loc:hover{transform:translateY(-8px);box-shadow:0 30px 62px rgba(10,42,102,.16);border-color:transparent}
+.loc-map{position:relative;height:196px;overflow:hidden;background:linear-gradient(150deg,#0a2a66,#1560d0 62%,#2b8bef)}
+.loc.alt .loc-map{background:linear-gradient(150deg,#071e4d,#1560d0 55%,#2b8bef)}
+.loc-map .mapsvg{position:absolute;inset:0;width:100%;height:100%}
+.loc-map .grid-tex{position:absolute;inset:0;opacity:.14;background-image:radial-gradient(rgba(255,255,255,.85) 1px,transparent 1.5px);background-size:20px 20px}
+.loc-flag{position:absolute;top:15px;left:15px;z-index:4;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);color:#fff;font-family:var(--font);font-size:12px;font-weight:600;padding:7px 13px;border-radius:99px}
+.loc-flag .fl{font-size:14px;line-height:1}
+.loc-pin{position:absolute;top:50%;left:50%;z-index:3;transform:translate(-50%,-78%);animation:pinb 3s var(--ease) infinite}
+@keyframes pinb{50%{transform:translate(-50%,-90%)}}
+.loc-pin .dot{width:48px;height:48px;border-radius:50% 50% 50% 0;background:#fff;transform:rotate(-45deg);display:grid;place-items:center;box-shadow:0 12px 26px rgba(7,30,77,.45)}
+.loc-pin .dot .hole{width:17px;height:17px;border-radius:50%;background:var(--grad);transform:rotate(45deg)}
+.loc-pin .sh{position:absolute;left:50%;bottom:-13px;width:34px;height:9px;border-radius:50%;background:rgba(7,30,77,.4);filter:blur(3px);transform:translateX(-50%);animation:pinsh 3s var(--ease) infinite}
+@keyframes pinsh{50%{width:22px;opacity:.5}}
+.loc-body{display:flex;flex-direction:column;flex:1;padding:26px 26px 28px}
+.loc-city{font-family:var(--font);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--royal);margin-bottom:11px}
+.loc-body h3{font-size:22px;font-weight:700}
+.loc-addr{display:flex;gap:11px;align-items:flex-start;color:var(--muted);font-size:15px;margin-top:10px;line-height:1.5}
+.loc-addr svg{flex-shrink:0;color:var(--electric);margin-top:1px}
+.loc-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:auto;padding-top:24px}
+.loc-actions .btn.primary{padding:13px 22px;font-size:14.5px}
+.loc-actions .btn.ghost{padding:13px 20px;font-size:14.5px}
+.ar{direction:rtl;text-align:right;unicode-bidi:plaintext}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .rv.in{opacity:1;transform:none}
@@ -238,6 +264,7 @@ footer{border-top:1px solid var(--line);padding:40px 0}
   .why-grid,.cat-grid{grid-template-columns:repeat(2,1fr)}
   .about-grid{grid-template-columns:1fr;gap:36px}
   .soc-grid{grid-template-columns:repeat(2,1fr)}
+  .loc-grid{grid-template-columns:1fr}
   .links{display:none}.links.open{display:flex;position:absolute;top:70px;left:16px;right:16px;flex-direction:column;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);padding:12px;border-radius:22px;box-shadow:0 20px 46px rgba(10,42,102,.16)}
   .links.open a{width:100%}
   .burger{display:flex}
@@ -289,13 +316,14 @@ footer{border-top:1px solid var(--line);padding:40px 0}
 <symbol id="i-support" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 18v-6a8 8 0 0116 0v6"/><path d="M20 19a2 2 0 01-2 2h-1v-6h3zM4 15h3v6H6a2 2 0 01-2-2z"/></g></symbol>
 <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
 <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-loc" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 22s7-6.3 7-12a7 7 0 10-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.6" fill="currentColor" stroke="none"/></symbol>
 </svg>
 
 <!-- NAV -->
 <header id="hd"><nav class="nav">
   <a class="nav-logo" href="#home"><img src="assets/logo.png" alt="Khalaf Electronics"/></a>
   <div class="links" id="links">
-    <a href="#home">Home</a><a href="#about">About</a><a href="#brands">Brands</a><a href="#why">Why Us</a><a href="#contact">Contact</a>
+    <a href="#home">Home</a><a href="#about">About</a><a href="#brands">Brands</a><a href="#why">Why Us</a><a href="#locations">Locations</a><a href="#contact">Contact</a>
   </div>
   <button class="cta-btn magnetic" onclick="go('#contact')">Contact Us</button>
   <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -403,6 +431,58 @@ footer{border-top:1px solid var(--line);padding:40px 0}
       <div class="stat"><div class="n" data-count="500" data-suffix="+">0</div><div class="l">Products</div></div>
       <div class="stat"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">Original</div></div>
     </div>
+  </div>
+</div></section>
+
+<!-- LOCATIONS -->
+<section class="sec" id="locations"><div class="shell">
+  <div class="sec-head rv"><span class="eyebrow" style="justify-content:center">Visit Us</span><h2>Our Locations</h2><p>Two branches ready to welcome you — find the one nearest to you and drop by.</p></div>
+  <div class="loc-grid">
+
+    <div class="loc rv magnetic">
+      <div class="loc-map">
+        <svg class="mapsvg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g stroke="#ffffff" stroke-opacity=".16" fill="none"><path d="M-20 66 L180 92 L420 44" stroke-width="15"/><path d="M66 -20 L128 220" stroke-width="12"/><path d="M-20 150 L180 140 L420 172" stroke-width="10"/><path d="M300 -20 L286 220" stroke-width="9"/></g>
+          <g stroke="#ffffff" stroke-opacity=".34" stroke-dasharray="2 11" stroke-linecap="round" fill="none"><path d="M-20 66 L180 92 L420 44" stroke-width="2"/><path d="M-20 150 L180 140 L420 172" stroke-width="2"/></g>
+          <g fill="#ffffff" fill-opacity=".07"><rect x="150" y="108" width="74" height="58" rx="7"/><rect x="238" y="52" width="58" height="46" rx="7"/><rect x="58" y="30" width="46" height="40" rx="7"/></g>
+        </svg>
+        <div class="grid-tex"></div>
+        <div class="loc-flag"><span class="fl">🇦🇪</span> United Arab Emirates</div>
+        <div class="loc-pin"><div class="dot"><span class="hole"></span></div><div class="sh"></div></div>
+      </div>
+      <div class="loc-body">
+        <div class="loc-city">Ajman · UAE</div>
+        <h3 class="ar">فرع عجمان – النعيمية 1</h3>
+        <div class="loc-addr ar"><svg width="20" height="20"><use href="#i-loc"/></svg><span>النعيمية 1، إمارة عجمان، الإمارات العربية المتحدة</span></div>
+        <div class="loc-actions">
+          <a class="btn primary magnetic" href="https://www.google.com/maps/search/?api=1&query=Al+Nuaimiya+1%2C+Ajman%2C+UAE" target="_blank" rel="noopener">Get Directions <svg width="17" height="17"><use href="#i-arrow"/></svg></a>
+          <a class="btn ghost magnetic" href="https://wa.me/966544960914" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="loc alt rv d1 magnetic">
+      <div class="loc-map">
+        <svg class="mapsvg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g stroke="#ffffff" stroke-opacity=".16" fill="none"><path d="M-20 120 L160 100 L420 132" stroke-width="15"/><path d="M110 -20 L150 220" stroke-width="12"/><path d="M-20 50 L200 66 L420 30" stroke-width="10"/><path d="M320 -20 L300 220" stroke-width="9"/></g>
+          <g stroke="#ffffff" stroke-opacity=".34" stroke-dasharray="2 11" stroke-linecap="round" fill="none"><path d="M-20 120 L160 100 L420 132" stroke-width="2"/><path d="M-20 50 L200 66 L420 30" stroke-width="2"/></g>
+          <g fill="#ffffff" fill-opacity=".07"><rect x="168" y="112" width="70" height="54" rx="7"/><rect x="250" y="48" width="56" height="44" rx="7"/><rect x="70" y="120" width="48" height="42" rx="7"/></g>
+        </svg>
+        <div class="grid-tex"></div>
+        <div class="loc-flag"><span class="fl">🇸🇾</span> Syria</div>
+        <div class="loc-pin"><div class="dot"><span class="hole"></span></div><div class="sh"></div></div>
+      </div>
+      <div class="loc-body">
+        <div class="loc-city">Daraa · Syria</div>
+        <h3 class="ar">فرع بصرى الشام – درعا</h3>
+        <div class="loc-addr ar"><svg width="20" height="20"><use href="#i-loc"/></svg><span>بصرى الشام، محافظة درعا، سوريا</span></div>
+        <div class="loc-actions">
+          <a class="btn primary magnetic" href="https://www.google.com/maps/search/?api=1&query=Bosra+al-Sham%2C+Daraa%2C+Syria" target="_blank" rel="noopener">Get Directions <svg width="17" height="17"><use href="#i-arrow"/></svg></a>
+          <a class="btn ghost magnetic" href="https://wa.me/966544960914" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div></section>
 
