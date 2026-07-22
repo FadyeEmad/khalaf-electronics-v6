@@ -226,8 +226,8 @@ footer{border-top:1px solid var(--line);padding:40px 0}
 
 /* locations */
 .loc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.loc{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--rl);overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .4s}
-.loc:hover{transform:translateY(-8px);box-shadow:0 30px 62px rgba(10,42,102,.16);border-color:transparent}
+.loc{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--rl);overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
+.loc:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 24px 48px rgba(10,42,102,.12);border-color:transparent}
 .loc-map{position:relative;height:196px;overflow:hidden;background:linear-gradient(150deg,#0a2a66,#1560d0 62%,#2b8bef)}
 .loc.alt .loc-map{background:linear-gradient(150deg,#071e4d,#1560d0 55%,#2b8bef)}
 .loc-map .mapsvg{position:absolute;inset:0;width:100%;height:100%}
@@ -439,7 +439,7 @@ footer{border-top:1px solid var(--line);padding:40px 0}
   <div class="sec-head rv"><span class="eyebrow" style="justify-content:center">Visit Us</span><h2>Our Locations</h2><p>Two branches ready to welcome you — find the one nearest to you and drop by.</p></div>
   <div class="loc-grid">
 
-    <div class="loc rv magnetic">
+    <div class="loc rv">
       <div class="loc-map">
         <svg class="mapsvg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g stroke="#ffffff" stroke-opacity=".16" fill="none"><path d="M-20 66 L180 92 L420 44" stroke-width="15"/><path d="M66 -20 L128 220" stroke-width="12"/><path d="M-20 150 L180 140 L420 172" stroke-width="10"/><path d="M300 -20 L286 220" stroke-width="9"/></g>
@@ -461,7 +461,7 @@ footer{border-top:1px solid var(--line);padding:40px 0}
       </div>
     </div>
 
-    <div class="loc alt rv d1 magnetic">
+    <div class="loc alt rv d1">
       <div class="loc-map">
         <svg class="mapsvg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g stroke="#ffffff" stroke-opacity=".16" fill="none"><path d="M-20 120 L160 100 L420 132" stroke-width="15"/><path d="M110 -20 L150 220" stroke-width="12"/><path d="M-20 50 L200 66 L420 30" stroke-width="10"/><path d="M320 -20 L300 220" stroke-width="9"/></g>
